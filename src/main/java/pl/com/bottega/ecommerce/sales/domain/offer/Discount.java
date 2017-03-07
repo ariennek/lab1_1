@@ -8,11 +8,11 @@ import java.math.BigDecimal;
 public class Discount {
 
     private String discountCause;
-    private BigDecimal discount;
+    private Money money;
 
-    Discount(String discountCause, BigDecimal discount) {
+    Discount(String discountCause, Money money) {
         this.discountCause = discountCause;
-        this.discount = discount;
+        this.money = money;
     }
 
     BigDecimal calculateDiscountValue() {
