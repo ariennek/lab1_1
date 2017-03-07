@@ -10,7 +10,7 @@ public class Product {
 
     private String productId;
 
-    private BigDecimal productPrice;
+    private Money totalCost;
 
     private String productName;
 
@@ -22,8 +22,8 @@ public class Product {
         return productId;
     }
 
-    public BigDecimal getProductPrice() {
-        return productPrice;
+    public Money getProductPrice() {
+        return totalCost;
     }
 
     public String getProductName() {
@@ -43,7 +43,7 @@ public class Product {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((productName == null) ? 0 : productName.hashCode());
-        result = prime * result + ((productPrice == null) ? 0 : productPrice.hashCode());
+        result = prime * result + ((totalCost == null) ? 0 : totalCost.hashCode());
         result = prime * result
                 + ((productId == null) ? 0 : productId.hashCode());
         result = prime * result + ((productType == null) ? 0 : productType.hashCode());
@@ -64,10 +64,10 @@ public class Product {
                 return false;
         } else if (!productName.equals(other.productName))
             return false;
-        if (productPrice == null) {
-            if (other.productPrice != null)
+        if (totalCost == null) {
+            if (other.totalCost != null)
                 return false;
-        } else if (!productPrice.equals(other.productPrice))
+        } else if (!totalCost.equals(other.totalCost))
             return false;
         if (productId == null) {
             if (other.productId != null)

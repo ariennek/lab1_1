@@ -9,13 +9,13 @@ public class Discount {
 
     private String discountCause;
 
-    private BigDecimal discountAmount;
+    private Money discountAmount;
 
     public String getDiscountCause() {
         return discountCause;
     }
 
-    public BigDecimal getDiscountAmount() {
+    public Money getDiscountAmount() {
         return discountAmount;
     }
 
