@@ -23,19 +23,18 @@ public class OfferItem {
 	// product
 	private Product product;
 	private int quantity;
-	private BigDecimal totalCost;
-	private String currency;
+	private Money totalCost;
 	
 	// discount
 	private String discountCause;
-	private BigDecimal discount;
+	private Money discount;
 
 	public OfferItem(Product item, int quantity) {
 		this(item, quantity, null, null);
 	}
 
 	public OfferItem(Product item, int quantity, 
-			BigDecimal discount, String discountCause) {
+			Money discount, String discountCause) {
 		this.product = item;
 
 		this.quantity = quantity;
@@ -44,18 +43,21 @@ public class OfferItem {
 
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null) {
-			discountValue = discountValue.subtract(discount);
+			discountValue = discountValue.subtract(discount.getValue());
 		}
 
-		this.totalCost = item.getPrice()
-			.multiply(new BigDecimal(quantity)).subtract(discountValue);
+		this.totalCost = new Money(
+			item.getPrice().getValue().multiply(
+				new BigDecimal(quantity)
+			).subtract(discountValue)
+		);
 	}
 
 	public String getProductId() {
 		return product.getId();
 	}
 
-	public BigDecimal getProductPrice() {
+	public Money getProductPrice() {
 		return product.getPrice();
 	}
 
@@ -71,15 +73,15 @@ public class OfferItem {
 		return product.getType();
 	}
 
-	public BigDecimal getTotalCost() {
+	public Money getTotalCost() {
 		return totalCost;
 	}
 
 	public String getTotalCostCurrency() {
-		return currency;
+		return totalCost.getCurrency();
 	}
 
-	public BigDecimal getDiscount() {
+	public Money getDiscount() {
 		return discount;
 	}
 
@@ -200,7 +202,7 @@ public class OfferItem {
 			return false;
 		}
 
-		BigDecimal max, min;
+		Money max, min;
 		if (totalCost.compareTo(other.totalCost) > 0) {
 			max = totalCost;
 			min = other.totalCost;
@@ -209,8 +211,8 @@ public class OfferItem {
 			min = totalCost;
 		}
 
-		BigDecimal difference = max.subtract(min);
-		BigDecimal acceptableDelta = max.multiply(new BigDecimal(delta / 100));
+		BigDecimal difference = max.getValue().subtract(min.getValue());
+		BigDecimal acceptableDelta = max.getValue().multiply(new BigDecimal(delta / 100));
 
 		return acceptableDelta.compareTo(difference) > 0;
 	}

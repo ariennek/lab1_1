@@ -9,24 +9,25 @@ import java.util.Date;
  */
 public class Product {
 	private String Id;
-	private BigDecimal Price;
+	private Money Price;
 	private String Name;
 	private Date SnapshotDate;
 	private String Type;
 
-	public Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType) {
-		this.Id = productId;
-		this.Price = productPrice;
-		this.Name = productName;
-		this.SnapshotDate = productSnapshotDate;
-		this.Type = productType;
+	public Product(String Id, Money Price, String Name, 
+			Date SnapshotDate, String Type) {
+		this.Id = Id;
+		this.Price = Price;
+		this.Name = Name;
+		this.SnapshotDate = SnapshotDate;
+		this.Type = Type;
 	}
 
 	public String getId() {
 		return Id;
 	}
 
-	public BigDecimal getPrice() {
+	public Money getPrice() {
 		return Price;
 	}
 
