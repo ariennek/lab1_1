@@ -10,9 +10,14 @@ import java.math.BigDecimal;
  *
  * @author 195059
  */
-public class Money {
+public class Money {    
     private BigDecimal amount;
     private String Currency;
+    
+    public Money(BigDecimal amount, String Currency) {
+        this.amount = amount;
+        this.Currency = Currency;
+    }
 
     public BigDecimal getAmount() {
         return amount;
