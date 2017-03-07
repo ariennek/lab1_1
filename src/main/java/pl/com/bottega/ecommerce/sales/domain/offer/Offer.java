@@ -26,6 +26,7 @@ public class Offer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((availableItems == null) ? 0 : availableItems.hashCode());
+		result = prime * result + ((unavailableItems == null) ? 0 : unavailableItems.hashCode());
 		return result;
 	}
 
