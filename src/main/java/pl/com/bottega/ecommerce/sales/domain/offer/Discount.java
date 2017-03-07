@@ -9,13 +9,24 @@ public class Discount {
 
     private String discountCause;
     private BigDecimal discount;
+    private BigDecimal discountValue = new BigDecimal(0);
 
     public Discount(BigDecimal discount, String discountCause) {
 
         this.discount = discount;
         this.discountCause = discountCause;
+    }
 
-        BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null)discountValue = discountValue.subtract(discount);
+    public String getDiscountCause() {
+        return discountCause;
+    }
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public BigDecimal getDiscountValue () {
+        if (getDiscount() != null) discountValue = discountValue.subtract(getDiscount());
+        return discountValue;
     }
 }
