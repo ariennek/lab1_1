@@ -15,4 +15,12 @@ public class Discount {
         this.discountCause = discountCause;
         this.discount = discount;
     }
+
+    public BigDecimal calculateDiscountValue () {
+        BigDecimal discountValue = new BigDecimal(0);
+        if (discount != null) {
+            discountValue = discountValue.subtract(discount);
+        }
+        return discountValue;
+    }
 }

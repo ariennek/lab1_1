@@ -22,25 +22,20 @@ public class OfferItem {
 
 	private Product product;
 	private Discount discount;
+	private BigDecimal totalCost;
+	private int quantity;
 
-	public OfferItem(String productId, BigDecimal productPrice, String productName,
-			Date productSnapshotDate, String productType, int quantity) {
-		this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
+	public OfferItem(Product product, Discount discount, int quantity) {
+			this.discount = discount;
+			this.product = product;
+			this.totalCost = calculateOfferTotalCost();
+			this.quantity = quantity;
 	}
 
-	public OfferItem(String productId, BigDecimal productPrice, String productName,
-			Date productSnapshotDate, String productType, int quantity,
-			BigDecimal discount, String discountCause) {
-
-			this.discount = new Discount(discountCause,discount);
-
-			BigDecimal discountValue = this.discount.calculateDiscountValue();
-
-		BigDecimal totalCost = productPrice.multiply(new BigDecimal(quantity)).subtract(discountValue);
-
-		this.product = new Product (productId,productPrice,productName,productSnapshotDate,productType,quantity,totalCost);
+	private BigDecimal calculateOfferTotalCost() {
+		BigDecimal discountValue = this.discount.calculateDiscountValue();
+		return this.product.getProductPrice().multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
-
 
 
 	@Override

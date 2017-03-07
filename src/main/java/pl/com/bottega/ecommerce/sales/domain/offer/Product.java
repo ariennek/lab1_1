@@ -18,19 +18,17 @@ public class Product {
 
     private String productType;
 
-    private int quantity;
-
-    private BigDecimal totalCost;
-
 
     public Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType, int quantity, BigDecimal totalCost) {
+            String productType) {
         this.productId = productId;
         this.productPrice = productPrice;
         this.productName = productName;
         this.productSnapshotDate = productSnapshotDate;
         this.productType = productType;
-        this.quantity = quantity;
-        this.totalCost = totalCost;
+    }
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 }
