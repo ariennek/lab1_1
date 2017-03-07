@@ -96,28 +96,28 @@ public class OfferItem {
 
 	/**
 	 * 
-	 * @param item
+	 * @param other
 	 * @param delta
 	 *            acceptable percentage difference
 	 * @return
 	 */
 	public boolean sameAs(OfferItem other, double delta) {
-		if (productName == null) {
-			if (other.productName != null)
+		if (this.product.getProductName() == null) {
+			if (other.getProduct().getProductName() != null)
 				return false;
-		} else if (!productName.equals(other.productName))
+		} else if (!this.product.getProductName().equals(other.getProduct().getProductName()))
 			return false;
-		if (productPrice == null) {
-			if (other.productPrice != null)
+		if (this.product.getProductPrice() == null) {
+			if (other.getProduct().getProductPrice() != null)
 				return false;
-		} else if (!productPrice.equals(other.productPrice))
+		} else if (!this.product.getProductPrice().equals(other.getProduct().getProductPrice()))
 			return false;
-		if (productId == null) {
-			if (other.productId != null)
+		if (this.product.getProductId() == null) {
+			if (other.getProduct().getProductId() != null)
 				return false;
-		} else if (!productId.equals(other.productId))
+		} else if (!this.product.getProductId().equals(other.getProduct().getProductId()))
 			return false;
-		if (productType != other.productType)
+		if (this.product.getProductType() != other.getProduct().getProductType())
 			return false;
 
 		if (quantity != other.quantity)
@@ -138,4 +138,19 @@ public class OfferItem {
 		return acceptableDelta.compareTo(difference) > 0;
 	}
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public Money getTotalCost() {
+        return totalCost;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

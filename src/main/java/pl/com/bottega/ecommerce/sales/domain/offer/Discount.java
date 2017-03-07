@@ -18,9 +18,17 @@ public class Discount {
     BigDecimal calculateDiscountValue() {
 
         BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null) {
-            discountValue = discountValue.subtract(discount);
+        if (money != null) {
+            discountValue = discountValue.subtract(money.getAmount());
         }
         return discountValue;
+    }
+
+    public String getDiscountCause() {
+        return discountCause;
+    }
+
+    public Money getMoney() {
+        return money;
     }
 }

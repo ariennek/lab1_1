@@ -22,4 +22,5 @@ public class Money {
     public BigDecimal getAmount() {
         return amount;
     }
+
 }
