@@ -27,9 +27,7 @@ public class OfferItem {
 	private String currency;
 
 	// discount
-	private String discountCause;
 
-	private BigDecimal discount;
 
 	public OfferItem(int quantity) {
 		this.quantity = quantity;

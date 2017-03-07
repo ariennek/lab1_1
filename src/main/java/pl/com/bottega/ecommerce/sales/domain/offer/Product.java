@@ -9,13 +9,9 @@ import java.util.Date;
 public class Product {
 
     private String id;
-
     private BigDecimal price;
-
     private String name;
-
     private Date snapshotDate;
-
     private String type;
 
     public Product(String id, BigDecimal price, String name, Date snapshotDate, String type) {
@@ -27,24 +23,23 @@ public class Product {
         this.type = type;
     }
 
-
-    public String getProductId() {
+    public String getId() {
         return id;
     }
 
-    public BigDecimal getProductPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public String getProductName() {
+    public String getName() {
         return name;
     }
 
-    public Date getProductSnapshotDate() {
+    public Date getSnapshotDate() {
         return snapshotDate;
     }
 
-    public String getProductType() {
+    public String getType() {
         return type;
     }
 }
