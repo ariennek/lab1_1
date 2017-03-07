@@ -104,22 +104,22 @@ public class OfferItem {
 	 * @return
 	 */
 	public boolean sameAs(OfferItem other, double delta) {
-		if (productName == null) {
-			if (other.productName != null)
+		if (this.product.getProductName() == null) {
+			if (other.getProduct().getProductName() != null)
 				return false;
-		} else if (!productName.equals(other.productName))
+		} else if (!this.product.getProductName().equals(other.product.getProductName()))
 			return false;
-		if (productPrice == null) {
-			if (other.productPrice != null)
+		if (this.getProduct().getProductPrice() == null) {
+			if (other.product.getProductPrice()!= null)
 				return false;
-		} else if (!productPrice.equals(other.productPrice))
+		} else if (!this.getProduct().getProductPrice().equals(other.getProduct().getProductPrice()))
 			return false;
-		if (productId == null) {
-			if (other.productId != null)
+		if (this.getProduct().getProductId()== null) {
+			if (other.getProduct().getProductId()!= null)
 				return false;
-		} else if (!productId.equals(other.productId))
+		} else if (!this.getProduct().getProductId().equals(other.getProduct().getProductId()))
 			return false;
-		if (productType != other.productType)
+		if (this.getProduct().getProductType()!= other.getProduct().getProductType())
 			return false;
 
 		if (quantity != other.quantity)
@@ -140,4 +140,7 @@ public class OfferItem {
 		return acceptableDelta.compareTo(difference) > 0;
 	}
 
+	public Product getProduct() {
+		return product;
+	}
 }

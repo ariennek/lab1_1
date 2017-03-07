@@ -6,10 +6,7 @@ import java.math.BigDecimal;
  * Created by Piotr on 07.03.2017.
  */
 public class Discount {
-    // discount
     private String discountCause;
-
-//    private BigDecimal discount;
     private Money discount;
 
     public Discount(String discountCause, Money discount) {
