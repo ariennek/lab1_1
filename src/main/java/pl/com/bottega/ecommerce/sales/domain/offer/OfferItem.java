@@ -32,15 +32,13 @@ public class OfferItem {
 		this.product = product;
 		this.quantity = quantity;
 		this.discount = discount;
+		calculateTotalCost(product, quantity);
+	}
 
+	private void calculateTotalCost(Product product, int quantity) {
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null)
 			discountValue = discountValue.subtract(discount.discount.value);
-
-		calculateTotalCost(product, quantity, discountValue);
-	}
-
-	private void calculateTotalCost(Product product, int quantity, BigDecimal discountValue) {
 		this.totalCost.value = product.price.value.multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
 
