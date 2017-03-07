@@ -21,10 +21,7 @@ import java.util.Date;
 public class OfferItem {
 
 	private Product product;
-	// discount
-	private String discountCause;
-
-	private BigDecimal discount;
+	private Discount discount;
 
 	public OfferItem(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity) {
@@ -34,27 +31,19 @@ public class OfferItem {
 	public OfferItem(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity,
 			BigDecimal discount, String discountCause) {
-		this.discount = discount;
-		this.discountCause = discountCause;
 
-		BigDecimal discountValue = new BigDecimal(0);
+			this.discount = new Discount(discountCause,discount);
+
+			BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null) {
 			discountValue = discountValue.subtract(discount);
 		}
 
-		BigDecimal totalCost = productPrice
-				.multiply(new BigDecimal(quantity)).subtract(discountValue);
+		BigDecimal totalCost = productPrice.multiply(new BigDecimal(quantity)).subtract(discountValue);
 
 		this.product = new Product (productId,productPrice,productName,productSnapshotDate,productType,quantity,totalCost);
 	}
 
-	public BigDecimal getDiscount() {
-		return discount;
-	}
-
-	public String getDiscountCause() {
-		return discountCause;
-	}
 
 
 	@Override
