@@ -21,11 +21,7 @@ import java.util.Date;
 public class OfferItem {
 
 	private Product product;
-
-	// discount
-	private String discountCause;
-
-	private BigDecimal discount;
+	private Discount discount;
 
 	private String currency;
 
@@ -44,7 +40,7 @@ public class OfferItem {
 				BigDecimal discount,
 				String discountCause
 			) {
-
+        this.discount = new Discount(discountCause,discount);
 
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null)
@@ -54,8 +50,6 @@ public class OfferItem {
 				.multiply(new BigDecimal(quantity)).subtract(discountValue);
 
 		this.product = new Product(productId,productPrice,productName,productSnapshotDate,productType,quantity,totalCost);
-		this.discount = discount;
-		this.discountCause = discountCause;
 	}
 
 	@Override

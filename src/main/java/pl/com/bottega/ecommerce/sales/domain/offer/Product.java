@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Product {
 
-    public Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType, int quantity, BigDecimal totalCost) {
+    Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType, int quantity, BigDecimal totalCost) {
         this.productId = productId;
         this.productPrice = productPrice;
         this.productName = productName;
