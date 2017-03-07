@@ -7,22 +7,22 @@ import java.util.Date;
  * Created by 195035 on 3/7/2017.
  */
 public class Item {
-    public final String productId;
+    public final String id;
 
-    public final BigDecimal productPrice;
+    public final BigDecimal price;
 
-    public final String productName;
+    public final String name;
 
-    public final Date productSnapshotDate;
+    public final Date snapshotDate;
 
-    public final String productType;
+    public final String type;
 
-    public Item(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType) {
-        this.productId = productId;
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productSnapshotDate = productSnapshotDate;
-        this.productType = productType;
+    public Item(String id, BigDecimal price, String name, Date snapshotDate, String type) {
+        this.id = id;
+        this.price = price;
+        this.name = name;
+        this.snapshotDate = snapshotDate;
+        this.type = type;
     }
 
     @Override
@@ -32,21 +32,21 @@ public class Item {
 
         Item item = (Item) o;
 
-        if (productId != null ? !productId.equals(item.productId) : item.productId != null) return false;
-        if (productPrice != null ? !productPrice.equals(item.productPrice) : item.productPrice != null) return false;
-        if (productName != null ? !productName.equals(item.productName) : item.productName != null) return false;
-        if (productSnapshotDate != null ? !productSnapshotDate.equals(item.productSnapshotDate) : item.productSnapshotDate != null)
+        if (id != null ? !id.equals(item.id) : item.id != null) return false;
+        if (price != null ? !price.equals(item.price) : item.price != null) return false;
+        if (name != null ? !name.equals(item.name) : item.name != null) return false;
+        if (snapshotDate != null ? !snapshotDate.equals(item.snapshotDate) : item.snapshotDate != null)
             return false;
-        return productType != null ? productType.equals(item.productType) : item.productType == null;
+        return type != null ? type.equals(item.type) : item.type == null;
     }
 
     @Override
     public int hashCode() {
-        int result = productId != null ? productId.hashCode() : 0;
-        result = 31 * result + (productPrice != null ? productPrice.hashCode() : 0);
-        result = 31 * result + (productName != null ? productName.hashCode() : 0);
-        result = 31 * result + (productSnapshotDate != null ? productSnapshotDate.hashCode() : 0);
-        result = 31 * result + (productType != null ? productType.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (snapshotDate != null ? snapshotDate.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
 }
