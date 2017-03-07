@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Offer {
-	private List<OfferItem> availabeItems = new ArrayList<OfferItem>();
+	private List<OfferItem> availableItems = new ArrayList<OfferItem>();
 
 	private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
 
-	public Offer(List<OfferItem> availabeItems, List<OfferItem> unavailableItems) {
-		this.availabeItems = availabeItems;
+	public Offer(List<OfferItem> availableItems, List<OfferItem> unavailableItems) {
+		this.availableItems = availableItems;
 		this.unavailableItems = unavailableItems;
 	}
 
 	public List<OfferItem> getAvailabeItems() {
-		return availabeItems;
+		return availableItems;
 	}
 
 	public List<OfferItem> getUnavailableItems() {
@@ -25,7 +25,7 @@ public class Offer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((availabeItems == null) ? 0 : availabeItems.hashCode());
+		result = prime * result + ((availableItems == null) ? 0 : availableItems.hashCode());
 		return result;
 	}
 
@@ -38,10 +38,10 @@ public class Offer {
 		if (getClass() != obj.getClass())
 			return false;
 		Offer other = (Offer) obj;
-		if (availabeItems == null) {
-			if (other.availabeItems != null)
+		if (availableItems == null) {
+			if (other.availableItems != null)
 				return false;
-		} else if (!availabeItems.equals(other.availabeItems))
+		} else if (!availableItems.equals(other.availableItems))
 			return false;
 		return true;
 	}
@@ -54,10 +54,10 @@ public class Offer {
 	 * @return
 	 */
 	public boolean sameAs(Offer seenOffer, double delta) {
-		if (!(availabeItems.size() == seenOffer.availabeItems.size()))
+		if (!(availableItems.size() == seenOffer.availableItems.size()))
 			return false;
 
-		for (OfferItem item : availabeItems) {
+		for (OfferItem item : availableItems) {
 			OfferItem sameItem = seenOffer.findItem(item.getProductId());
 			if (sameItem == null)
 				return false;
@@ -69,7 +69,7 @@ public class Offer {
 	}
 
 	private OfferItem findItem(String productId) {
-		for (OfferItem item : availabeItems) {
+		for (OfferItem item : availableItems) {
 			if (item.getProductId().equals(productId))
 				return item;
 		}
