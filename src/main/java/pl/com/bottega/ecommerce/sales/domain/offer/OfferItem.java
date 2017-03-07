@@ -18,31 +18,26 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.math.BigDecimal;
 
 public class OfferItem {
-	// product
 	private int quantity;
 	
 	private Money totalCost;
-
-	// discount
-	private String discountCause;
-
-	private Money discount;
 	
 	private Product product;
 
+	private Discount discount;
+	
 	public OfferItem(Product product, int quantity) {
-		this(product, quantity, null, null);
+		this(product, quantity, null);
 	}
 
-	public OfferItem(Product product, int quantity, Money discount, String discountCause) {
+	public OfferItem(Product product, int quantity, Discount discount) {
 		this.quantity = quantity;
 		this.discount = discount;
-		this.discountCause = discountCause;
 		this.product = product;
 		
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null)
-			discountValue = discountValue.subtract(discount.value);
+			discountValue = discountValue.subtract(discount.discount.value);
 
 		this.totalCost.value = product.price.value.multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
@@ -55,12 +50,8 @@ public class OfferItem {
 		return totalCost;
 	}
 
-	public Money getDiscount() {
+	public Discount getDiscount() {
 		return discount;
-	}
-
-	public String getDiscountCause() {
-		return discountCause;
 	}
 
 	public int getQuantity() {
