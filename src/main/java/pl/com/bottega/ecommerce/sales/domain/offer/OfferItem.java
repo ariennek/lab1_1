@@ -30,25 +30,21 @@ public class OfferItem {
 	private String currency;
 
 	// discount
-	private String discountCause;
-
-	private BigDecimal discount;
+	private Discount discount;
 
 	public OfferItem(Product product, int quantity) {
-		this(product, quantity, null, null);
+		this(product, quantity, null);
 	}
 
 	public OfferItem(Product product, int quantity,
-			BigDecimal discount, String discountCause) {
+			Discount discount) {
 		this.product = product;
-
 		this.quantity = quantity;
 		this.discount = discount;
-		this.discountCause = discountCause;
 
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null)
-			discountValue = discountValue.subtract(discount);
+			discountValue = discountValue.subtract(discount.getDiscountAmount());
 
 		this.totalCost = product.getProductPrice()
 				.multiply(new BigDecimal(quantity)).subtract(discountValue);
@@ -62,14 +58,6 @@ public class OfferItem {
 		return currency;
 	}
 
-	public BigDecimal getDiscount() {
-		return discount;
-	}
-
-	public String getDiscountCause() {
-		return discountCause;
-	}
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -78,12 +66,16 @@ public class OfferItem {
 		return product;
 	}
 
+	public Discount getDiscount() {
+		return discount;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((discount == null) ? 0 : discount.hashCode());
+				+ discount.hashCode();
 		result = prime * result + product.hashCode();
 		result = prime * result + quantity;
 		result = prime * result
