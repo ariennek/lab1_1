@@ -8,16 +8,6 @@ import java.util.Date;
  */
 public class Product {
 
-    Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType, int quantity, BigDecimal totalCost) {
-        this.productId = productId;
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productSnapshotDate = productSnapshotDate;
-        this.productType = productType;
-        this.quantity = quantity;
-        this.totalCost = totalCost;
-    }
-
     private String productId;
 
     private BigDecimal productPrice;
@@ -28,9 +18,13 @@ public class Product {
 
     private String productType;
 
-    private int quantity;
-
-    private BigDecimal totalCost;
+    public Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType) {
+        this.productId = productId;
+        this.productPrice = productPrice;
+        this.productName = productName;
+        this.productSnapshotDate = productSnapshotDate;
+        this.productType = productType;
+    }
 
     public String getProductId() {
         return productId;
@@ -70,21 +64,5 @@ public class Product {
 
     public void setProductType(String productType) {
         this.productType = productType;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public BigDecimal getTotalCost() {
-        return totalCost;
-    }
-
-    public void setTotalCost(BigDecimal totalCost) {
-        this.totalCost = totalCost;
     }
 }

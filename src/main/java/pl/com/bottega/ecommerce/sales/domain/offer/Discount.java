@@ -15,19 +15,12 @@ public class Discount {
         this.discount = discount;
     }
 
-    public String getDiscountCause() {
-        return discountCause;
-    }
+    BigDecimal calculateDiscountValue() {
 
-    public void setDiscountCause(String discountCause) {
-        this.discountCause = discountCause;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(BigDecimal discount) {
-        this.discount = discount;
+        BigDecimal discountValue = new BigDecimal(0);
+        if (discount != null) {
+            discountValue = discountValue.subtract(discount);
+        }
+        return discountValue;
     }
 }
