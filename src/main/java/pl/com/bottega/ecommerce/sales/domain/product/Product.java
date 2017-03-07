@@ -11,44 +11,44 @@ import java.util.Date;
  */
 public class Product {
 
-    private String productId;
+    private String Id;
 
-    private BigDecimal productPrice;
+    private BigDecimal price;
 
-    private String productName;
+    private String name;
 
-    private Date productSnapshotDate;
+    private Date snapshotDate;
 
-    private String productType;
+    private ProductType type;
 
-    public Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType) {
-        this.productId = productId;
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productSnapshotDate = productSnapshotDate;
-        this.productType = productType;
+    public Product(String productId, BigDecimal productPrice, String productName, Date snapshotDate,
+            ProductType type) {
+        this.Id = productId;
+        this.price = productPrice;
+        this.name = productName;
+        this.snapshotDate = snapshotDate;
+        this.type = type;
     }
 
 
-    public String getProductId() {
-        return productId;
+    public String getId() {
+        return Id;
     }
 
-    public BigDecimal getProductPrice() {
-        return productPrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public Date getProductSnapshotDate() {
-        return productSnapshotDate;
+    public Date getSnapshotDate() {
+        return snapshotDate;
     }
 
-    public String getProductType() {
-        return productType;
+    public ProductType getType() {
+        return type;
     }
 
     @Override public boolean equals(Object o) {
@@ -60,13 +60,13 @@ public class Product {
 
         Product product = (Product) o;
 
-        return new EqualsBuilder().append(productId, product.productId).append(productPrice, product.productPrice)
-                .append(productName, product.productName).append(productSnapshotDate, product.productSnapshotDate)
-                .append(productType, product.productType).isEquals();
+        return new EqualsBuilder().append(Id, product.Id).append(price, product.price)
+                .append(name, product.name).append(snapshotDate, product.snapshotDate)
+                .append(type, product.type).isEquals();
     }
 
     @Override public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(productId).append(productPrice).append(productName)
-                .append(productSnapshotDate).append(productType).toHashCode();
+        return new HashCodeBuilder(17, 37).append(Id).append(price).append(name)
+                .append(snapshotDate).append(type).toHashCode();
     }
 }

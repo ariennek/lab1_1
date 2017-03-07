@@ -18,7 +18,6 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import pl.com.bottega.ecommerce.sales.domain.product.Product;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class OfferItem {
 
@@ -50,7 +49,7 @@ public class OfferItem {
         if (discount != null)
             discountValue = discountValue.subtract(discount);
 
-        this.totalCost = product.getProductPrice().multiply(new BigDecimal(quantity)).subtract(discountValue);
+        this.totalCost = product.getPrice().multiply(new BigDecimal(quantity)).subtract(discountValue);
     }
 
 
