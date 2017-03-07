@@ -10,7 +10,7 @@ public class Product {
     // product
     private String productId;
 
-    private BigDecimal productPrice;
+    private Money productPrice;
 
     private String productName;
 
@@ -18,8 +18,7 @@ public class Product {
 
     private String productType;
 
-
-    public Product(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
+    public Product(String productId, Money productPrice, String productName, Date productSnapshotDate,
             String productType) {
         this.productId = productId;
         this.productPrice = productPrice;
@@ -28,7 +27,7 @@ public class Product {
         this.productType = productType;
     }
 
-    public BigDecimal getProductPrice() {
+    public Money getProductPrice() {
         return productPrice;
     }
 }

@@ -9,9 +9,10 @@ public class Discount {
     // discount
     private String discountCause;
 
-    private BigDecimal discount;
+//    private BigDecimal discount;
+    private Money discount;
 
-    public Discount(String discountCause, BigDecimal discount) {
+    public Discount(String discountCause, Money discount) {
         this.discountCause = discountCause;
         this.discount = discount;
     }
@@ -19,7 +20,7 @@ public class Discount {
     public BigDecimal calculateDiscountValue () {
         BigDecimal discountValue = new BigDecimal(0);
         if (discount != null) {
-            discountValue = discountValue.subtract(discount);
+            discountValue = discountValue.subtract(discount.getAmount());
         }
         return discountValue;
     }

@@ -22,19 +22,19 @@ public class OfferItem {
 
 	private Product product;
 	private Discount discount;
-	private BigDecimal totalCost;
+	private Money totalCost;
 	private int quantity;
 
-	public OfferItem(Product product, Discount discount, int quantity) {
+	public OfferItem(Product product, Discount discount, int quantity, String currency) {
 			this.discount = discount;
 			this.product = product;
-			this.totalCost = calculateOfferTotalCost();
+			this.totalCost = new Money(currency, calculateOfferTotalCost());
 			this.quantity = quantity;
 	}
 
 	private BigDecimal calculateOfferTotalCost() {
 		BigDecimal discountValue = this.discount.calculateDiscountValue();
-		return this.product.getProductPrice().multiply(new BigDecimal(quantity)).subtract(discountValue);
+		return this.product.getProductPrice().getAmount().multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
 
 
