@@ -26,9 +26,6 @@ public class OfferItem {
 
 	private String currency;
 
-	// discount
-
-
 	public OfferItem(int quantity) {
 		this.quantity = quantity;
 	}
