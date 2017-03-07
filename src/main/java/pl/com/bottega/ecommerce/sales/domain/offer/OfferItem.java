@@ -43,11 +43,11 @@ public class OfferItem {
 			discountValue = discountValue.subtract(discount.getValue());
 		}
 
-		this.totalCost = new Money(
-			item.getPrice().getValue().multiply(
-				new BigDecimal(quantity)
-			).subtract(discountValue)
-		);
+		this.totalCost = new Money(calculateTotalCost(item, quantity, discountValue));
+	}
+
+	private BigDecimal calculateTotalCost(Product item, int quantity, BigDecimal discountValue) {
+		return item.getPrice().getValue().multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
 
 	public String getProductId() {
