@@ -41,8 +41,11 @@ public class OfferItem {
         }
         
         this.totalCost = new Money(new BigDecimal(0),"zl");
-        this.totalCost.setAmount(product.getProductPrice()
-                .multiply(new BigDecimal(quantity)).subtract(discountValue));
+        calculateTotalCost(quantity, discountValue);
+    }
+
+    private void calculateTotalCost(int quantity1, BigDecimal discountValue) {
+        this.totalCost.setAmount(product.getProductPrice().multiply(new BigDecimal(quantity1)).subtract(discountValue));
     }
 
     public Product getProduct() {
