@@ -19,13 +19,11 @@ import java.math.BigDecimal;
 
 public class OfferItem {
 
-	private Item item;
+	private final Item item;
 
-	private int quantity;
+	private final int quantity;
 
-	private BigDecimal totalCost;
-
-	private String currency;
+	private final BigDecimal totalCost;
 
 	// discount
 	private Discount discount;
@@ -93,7 +91,7 @@ public class OfferItem {
 
     /**
 	 * 
-	 * @param item
+	 * @param other OfferItem to compare
 	 * @param delta
 	 *            acceptable percentage difference
 	 * @return
