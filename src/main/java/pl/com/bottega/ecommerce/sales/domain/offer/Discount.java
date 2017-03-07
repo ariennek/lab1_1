@@ -1,16 +1,14 @@
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
-import java.math.BigDecimal;
-
 /**
  * Created by 195035 on 3/7/2017.
  */
 public class Discount {
 
     public final String cause;
-    public final BigDecimal value;
+    public final Money value;
 
-    public Discount(String cause, BigDecimal value) {
+    public Discount(String cause, Money value) {
         this.cause = cause;
         this.value = value;
     }
@@ -22,8 +20,7 @@ public class Discount {
 
         Discount discount = (Discount) o;
 
-        if (cause != null ? !cause.equals(discount.cause) : discount.cause != null) return false;
-        return value != null ? value.equals(discount.value) : discount.value == null;
+        return (cause != null ? cause.equals(discount.cause) : discount.cause == null) && (value != null ? value.equals(discount.value) : discount.value == null);
     }
 
     @Override

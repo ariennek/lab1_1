@@ -23,7 +23,7 @@ public class OfferItem {
 
 	private final int quantity;
 
-	private final BigDecimal totalCost;
+	private final Money totalCost;
 
 	// discount
 	private Discount discount;
@@ -38,11 +38,15 @@ public class OfferItem {
 		this.quantity = quantity;
 		this.discount = discount;
 
-		BigDecimal discountValue = new BigDecimal(0);
-		if (discount != null)
-			discountValue = discountValue.subtract(discount.value);
+		if(item.price != null && discount.value != null && !item.price.currency.equals(discount.value.currency)) {
+		    throw new IllegalArgumentException("Currency mismatch");
+        }
 
-		this.totalCost = item.price.multiply(new BigDecimal(quantity)).subtract(discountValue);
+		BigDecimal discountValue = new BigDecimal(0);
+		if (discount != null && discount.value != null)
+			discountValue = discountValue.subtract(discount.value.value);
+
+		this.totalCost = new Money(item.price.currency, item.price.value.multiply(new BigDecimal(quantity)).subtract(discountValue));
 	}
 
 	@Override
@@ -94,7 +98,7 @@ public class OfferItem {
 	 * @param other OfferItem to compare
 	 * @param delta
 	 *            acceptable percentage difference
-	 * @return
+	 * @return true if offer is same as other and false otherwise
 	 */
 	public boolean sameAs(OfferItem other, double delta) {
 		if (item == null) {
@@ -106,7 +110,7 @@ public class OfferItem {
 		if (quantity != other.quantity)
 			return false;
 
-		BigDecimal max, min;
+		Money max, min;
 		if (totalCost.compareTo(other.totalCost) > 0) {
 			max = totalCost;
 			min = other.totalCost;
@@ -115,8 +119,8 @@ public class OfferItem {
 			min = totalCost;
 		}
 
-		BigDecimal difference = max.subtract(min);
-		BigDecimal acceptableDelta = max.multiply(new BigDecimal(delta / 100));
+		BigDecimal difference = max.value.subtract(min.value);
+		BigDecimal acceptableDelta = max.value.multiply(new BigDecimal(delta / 100));
 
 		return acceptableDelta.compareTo(difference) > 0;
 	}
