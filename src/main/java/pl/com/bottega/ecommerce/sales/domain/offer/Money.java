@@ -9,9 +9,9 @@ import java.math.BigDecimal;
  */
 public class Money {
     private BigDecimal totalCost;
-    private String currency;
+    private Currency currency;
 
-    public Money(BigDecimal totalCost, String currency) {
+    public Money(BigDecimal totalCost, Currency currency) {
         this.totalCost = totalCost;
         this.currency = currency;
     }
@@ -37,11 +37,11 @@ public class Money {
         this.totalCost = totalCost;
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(Currency currency) {
         this.currency = currency;
     }
 }

@@ -25,7 +25,7 @@ public class Product {
                    String productType,
                    int quantity,
                    BigDecimal totalCost,
-                   String currency) {
+                   Currency currency) {
 
         this.productId = productId;
         this.productPrice = productPrice;
@@ -96,11 +96,11 @@ public class Product {
         this.money.setTotalCost(totalCost);
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return this.money.getCurrency();
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(Currency currency) {
         this.money.setCurrency(currency);
     }
 

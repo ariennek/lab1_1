@@ -27,22 +27,27 @@ public class OfferItem {
                      Date productSnapshotDate, String productType, int quantity) {
         this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
     }
-
     public OfferItem(String productId, BigDecimal productPrice, String productName,
                      Date productSnapshotDate, String productType, int quantity,
                      BigDecimal discount, String discountCause) {
 
-        this.discount = new Discount(discountCause,discount);
+        this.discount = new Discount(discountCause, discount);
         BigDecimal totalCost = productPrice
                 .multiply(new BigDecimal(quantity)).subtract(this.discount.getDiscountValue());
         this.product = new Product(productId, productPrice, productName, productSnapshotDate, productType, quantity, totalCost, null);
     }
 
+    public Product getProduct() {
+        return product;
+    }
 
+    public Discount getDiscount() {
+        return discount;
+    }
 
     @Override
     public int hashCode() {
-       int result;
+        int result;
         result = product.hashCode() + discount.hashCode();
         return result;
     }
@@ -56,7 +61,7 @@ public class OfferItem {
         if (getClass() != obj.getClass())
             return false;
         OfferItem other = (OfferItem) obj;
-        if(other.product.equals(this.product) && other.discount.equals(this.discount)){
+        if (other.product.equals(this.product) && other.discount.equals(this.discount)) {
             return true;
         }
         return false;
@@ -68,7 +73,7 @@ public class OfferItem {
      * @return
      */
     public boolean sameAs(OfferItem other, double delta) {
-       return this.product.sameAs(other.product, delta);
+        return this.product.sameAs(other.product, delta);
     }
 
 }
