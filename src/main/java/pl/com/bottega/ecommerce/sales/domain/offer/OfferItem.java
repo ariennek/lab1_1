@@ -33,9 +33,13 @@ public class OfferItem {
 
 	private int quantity;
 
+
+
 	private BigDecimal totalCost;
 
 	private String currency;
+
+	private Product product;
 
 	// discount
 	private String discountCause;
@@ -168,7 +172,7 @@ public class OfferItem {
 
 	/**
 	 * 
-	 * @param item
+	 * @param other
 	 * @param delta
 	 *            acceptable percentage difference
 	 * @return
