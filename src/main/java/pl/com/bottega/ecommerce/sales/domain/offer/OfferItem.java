@@ -33,8 +33,6 @@ public class OfferItem {
                      BigDecimal discount, String discountCause) {
 
         this.discount = new Discount(discountCause,discount);
-
-
         BigDecimal totalCost = productPrice
                 .multiply(new BigDecimal(quantity)).subtract(this.discount.getDiscountValue());
         this.product = new Product(productId, productPrice, productName, productSnapshotDate, productType, quantity, totalCost, null);
@@ -58,12 +56,7 @@ public class OfferItem {
         if (getClass() != obj.getClass())
             return false;
         OfferItem other = (OfferItem) obj;
-        if (discount == null) {
-            if (other.discount != null)
-                return false;
-        } else if (!discount.equals(other.discount))
-            return false;
-        if(other.product.equals(this.product)){
+        if(other.product.equals(this.product) && other.discount.equals(this.discount)){
             return true;
         }
         return false;
