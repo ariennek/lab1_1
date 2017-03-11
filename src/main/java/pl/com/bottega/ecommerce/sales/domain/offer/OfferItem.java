@@ -69,22 +69,22 @@ public class OfferItem {
 				return false;
 		} else if (!discount.equals(other.discount))
 			return false;
-		if (productName == null) {
-			if (other.productName != null)
+		if (product.getProductName() == null) {
+			if (other.product.getProductName() != null)
 				return false;
-		} else if (!productName.equals(other.productName))
+		} else if (!product.getProductName().equals(other.product.getProductName()))
 			return false;
-		if (productPrice == null) {
-			if (other.productPrice != null)
+		if (product.getProductPrice() == null) {
+			if (other.product.getProductPrice() != null)
 				return false;
-		} else if (!productPrice.equals(other.productPrice))
+		} else if (!product.getProductPrice().equals(other.product.getProductPrice()))
 			return false;
-		if (productId == null) {
-			if (other.productId != null)
+		if (product.getProductId() == null) {
+			if (other.product.getProductId() != null)
 				return false;
-		} else if (!productId.equals(other.productId))
+		} else if (!product.getProductId().equals(other.product.getProductId()))
 			return false;
-		if (productType != other.productType)
+		if (product.getProductType() != other.product.getProductType())
 			return false;
 		if (quantity != other.quantity)
 			return false;
@@ -126,12 +126,12 @@ public class OfferItem {
 			return false;
 
 		BigDecimal max, min;
-		if (totalCost.compareTo(other.totalCost) > 0) {
-			max = totalCost;
-			min = other.totalCost;
+		if (totalCost.getAmount().compareTo(other.totalCost.getAmount()) > 0) {
+			max = totalCost.getAmount();
+			min = other.totalCost.getAmount();
 		} else {
-			max = other.totalCost;
-			min = totalCost;
+			max = other.totalCost.getAmount();
+			min = totalCost.getAmount();
 		}
 
 		BigDecimal difference = max.subtract(min);
