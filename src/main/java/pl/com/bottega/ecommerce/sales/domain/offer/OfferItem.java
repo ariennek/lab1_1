@@ -50,12 +50,16 @@ public class OfferItem {
 		return quantity;
 	}
 
+	public String getProductId()	{
+		return product.getId();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((discount == null) ? 0 : discount.getDiscount().hashCode());
+				+ ((discount == null) ? 0 : discount.hashCode());
 		result = prime * result + ((product.getName() == null) ? 0 : product.getName().hashCode());
 		result = prime * result + ((product.getPrice() == null) ? 0 : product.getPrice().hashCode());
 		result = prime * result
