@@ -8,7 +8,7 @@ import java.util.Date;
  * Date: 11.03.2017
  * Time: 22:52
  */
-public class Product {
+public class Product implements OfferItemImpl {
     private String productId;
     private BigDecimal productPrice;
     private String productName;
@@ -33,7 +33,7 @@ public class Product {
         this.productSnapshotDate = productSnapshotDate;
         this.productType = productType;
         this.quantity = quantity;
-        this.money = new Money(totalCost,currency);
+        this.money = new Money(totalCost, currency);
     }
 
     public Product() {
@@ -153,7 +153,7 @@ public class Product {
         return true;
     }
 
-    public boolean sameAs(Product product, double delta){
+    public boolean sameAs(Product product, double delta) {
         if (productName == null) {
             if (product.productName != null)
                 return false;

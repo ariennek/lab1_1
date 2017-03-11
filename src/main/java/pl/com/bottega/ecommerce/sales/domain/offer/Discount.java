@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  * Date: 11.03.2017
  * Time: 23:21
  */
-public class Discount {
+public class Discount implements OfferItemImpl{
     private String discountCause;
     private BigDecimal valueDiscount;
     private BigDecimal discountValue;
