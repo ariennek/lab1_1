@@ -6,6 +6,7 @@ import java.math.BigDecimal;
  * Created by Piotr on 07.03.2017.
  */
 public class Money {
+
     private String currency;
     private BigDecimal amount;
 

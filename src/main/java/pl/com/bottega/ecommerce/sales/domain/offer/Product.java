@@ -6,6 +6,7 @@ import java.util.Date;
  * Created by Piotr on 07.03.2017.
  */
 public class Product {
+
     private String productId;
     private Money productPrice;
     private String productName;

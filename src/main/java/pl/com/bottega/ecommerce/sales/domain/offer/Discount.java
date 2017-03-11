@@ -6,6 +6,7 @@ import java.math.BigDecimal;
  * Created by Piotr on 07.03.2017.
  */
 public class Discount {
+
     private String discountCause;
     private Money discount;
 
@@ -14,7 +15,7 @@ public class Discount {
         this.discount = discount;
     }
 
-    public BigDecimal calculateDiscountValue () {
+    public BigDecimal calculateDiscountValue() {
         BigDecimal discountValue = new BigDecimal(0);
         if (discount != null) {
             discountValue = discountValue.subtract(discount.getAmount());
