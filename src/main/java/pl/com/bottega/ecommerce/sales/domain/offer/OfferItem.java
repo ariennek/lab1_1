@@ -21,11 +21,7 @@ import java.util.Date;
 public class OfferItem {
 
     private Product product;
-
-    // discount
-    private String discountCause;
-
-    private BigDecimal discount;
+    private Discount discount;
 
     public OfferItem(String productId, BigDecimal productPrice, String productName,
                      Date productSnapshotDate, String productType, int quantity) {
@@ -36,35 +32,20 @@ public class OfferItem {
                      Date productSnapshotDate, String productType, int quantity,
                      BigDecimal discount, String discountCause) {
 
-        this.discount = discount;
-        this.discountCause = discountCause;
+        this.discount = new Discount(discountCause,discount);
 
-        BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null)
-            discountValue = discountValue.subtract(discount);
 
         BigDecimal totalCost = productPrice
-                .multiply(new BigDecimal(quantity)).subtract(discountValue);
+                .multiply(new BigDecimal(quantity)).subtract(this.discount.getDiscountValue());
         this.product = new Product(productId, productPrice, productName, productSnapshotDate, productType, quantity, totalCost, null);
     }
 
 
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public String getDiscountCause() {
-        return discountCause;
-    }
-
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result
-                + ((discount == null) ? 0 : discount.hashCode());
-        result += product.hashCode();
+       int result;
+        result = product.hashCode() + discount.hashCode();
         return result;
     }
 
