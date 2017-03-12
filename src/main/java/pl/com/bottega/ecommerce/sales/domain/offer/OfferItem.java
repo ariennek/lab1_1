@@ -71,6 +71,10 @@ public class OfferItem {
         return quantity;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
     @Override public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -108,7 +112,6 @@ public class OfferItem {
             return false;
         return true;
     }
-
 
 
 
