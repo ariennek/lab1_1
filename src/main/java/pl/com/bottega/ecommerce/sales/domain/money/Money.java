@@ -55,6 +55,21 @@ public class Money {
         return Currency.getInstance(code);
     }
 
+    public Money multiply(BigDecimal multiplier){
+        return new Money(code,denomination.multiply(multiplier));
+    }
+
+
+
+    public Money multiply(double multiplier){
+        return new Money(code,denomination.multiply(new BigDecimal(multiplier)));
+    }
+
+    public Money substract(Money money){
+        //TODO Add check for currency of money to substract compared to current one
+        return new Money(money.getCode(),denomination.subtract(money.denomination));
+    }
+
     @Override
     public String toString() {
         return String.format("%0$.2f %s", denomination, getCurrency().getSymbol());

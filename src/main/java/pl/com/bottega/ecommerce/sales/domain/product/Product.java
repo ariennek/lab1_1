@@ -2,6 +2,7 @@ package pl.com.bottega.ecommerce.sales.domain.product;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import pl.com.bottega.ecommerce.sales.domain.money.Money;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,7 +14,7 @@ public class Product {
 
     private String Id;
 
-    private BigDecimal price;
+    private Money value;
 
     private String name;
 
@@ -21,11 +22,11 @@ public class Product {
 
     private ProductType type;
 
-    public Product(String productId, BigDecimal productPrice, String productName, Date snapshotDate,
+    public Product(String Id, Money value, String name, Date snapshotDate,
             ProductType type) {
-        this.Id = productId;
-        this.price = productPrice;
-        this.name = productName;
+        this.Id = Id;
+        this.value = value;
+        this.name = name;
         this.snapshotDate = snapshotDate;
         this.type = type;
     }
@@ -35,8 +36,8 @@ public class Product {
         return Id;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Money getValue() {
+        return value;
     }
 
     public String getName() {
@@ -60,13 +61,13 @@ public class Product {
 
         Product product = (Product) o;
 
-        return new EqualsBuilder().append(Id, product.Id).append(price, product.price)
+        return new EqualsBuilder().append(Id, product.Id).append(value, product.value)
                 .append(name, product.name).append(snapshotDate, product.snapshotDate)
                 .append(type, product.type).isEquals();
     }
 
     @Override public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(Id).append(price).append(name)
+        return new HashCodeBuilder(17, 37).append(Id).append(value).append(name)
                 .append(snapshotDate).append(type).toHashCode();
     }
 }
