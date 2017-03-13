@@ -16,12 +16,11 @@
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class OfferItem {
 
 	private Product product;
-	
+
 	private int quantity;
 
 	private BigDecimal totalCost;
@@ -37,9 +36,8 @@ public class OfferItem {
 		this(product, quantity, null, null);
 	}
 
-	public OfferItem(Product product, int quantity,
-			BigDecimal discount, String discountCause) {
-		
+	public OfferItem(Product product, int quantity, BigDecimal discount, String discountCause) {
+
 		this.product = product;
 		this.quantity = quantity;
 		this.discount = discount;
@@ -49,10 +47,9 @@ public class OfferItem {
 		if (discount != null)
 			discountValue = discountValue.subtract(discount);
 
-		this.totalCost = product.getProductPrice()
-				.multiply(new BigDecimal(quantity)).subtract(discountValue);
+		this.totalCost = product.getProductPrice().multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
-	
+
 	public Product getProduct() {
 		return product;
 	}
@@ -81,13 +78,10 @@ public class OfferItem {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((discount == null) ? 0 : discount.hashCode());
-		result = prime * result
-				+ ((product == null) ? 0 : product.hashCode());
+		result = prime * result + ((discount == null) ? 0 : discount.hashCode());
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		result = prime * result + quantity;
-		result = prime * result
-				+ ((totalCost == null) ? 0 : totalCost.hashCode());
+		result = prime * result + ((totalCost == null) ? 0 : totalCost.hashCode());
 		return result;
 	}
 
@@ -103,7 +97,8 @@ public class OfferItem {
 		if (discount == null) {
 			if (other.discount != null)
 				return false;
-		} if (product == null) {
+		}
+		if (product == null) {
 			if (other.product != null)
 				return false;
 		} else if (!discount.equals(other.discount)) {
@@ -132,7 +127,7 @@ public class OfferItem {
 	public boolean sameAs(OfferItem other, double delta) {
 		if (product == null) {
 			if (other.product != null)
-				return false; 
+				return false;
 		} else if (product.getProductName() == null) {
 			if (other.product.getProductName() != null)
 				return false;
