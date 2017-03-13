@@ -50,7 +50,7 @@ public class OfferItem {
 	public Product getProduct() {
 		return product;
 	}
-	
+
 	public Money getTotalCost() {
 		return totalCost;
 	}
