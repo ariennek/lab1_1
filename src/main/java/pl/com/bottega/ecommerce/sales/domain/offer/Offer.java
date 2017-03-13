@@ -8,25 +8,33 @@ public class Offer {
 
 	private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
 
-	public Offer(List<OfferItem> availabeItems, List<OfferItem> unavailableItems) {
-		this.availableItems = availabeItems;
-		this.unavailableItems = unavailableItems;
-	}
-
-	public List<OfferItem> getAvailabeItems() {
-		return availableItems;
+	public Offer(List<OfferItem> availableItems, List<OfferItem> unavailableItems) {
+		this.setAvailableItems(availableItems);
+		this.setUnavailableItems(unavailableItems);
 	}
 
 	public List<OfferItem> getUnavailableItems() {
 		return unavailableItems;
 	}
 
+	public List<OfferItem> getAvailableItems() {
+		return availableItems;
+	}
+
+	public void setAvailableItems(List<OfferItem> availableItems) {
+		this.availableItems = availableItems;
+	}
+
+	public void setUnavailableItems(List<OfferItem> unavailableItems) {
+		this.unavailableItems = unavailableItems;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((availableItems == null) ? 0 : availableItems.hashCode());
-		result = prime * result + ((unavailableItems == null) ? 0 : unavailableItems.hashCode());
+		result = prime * result + ((this.getAvailableItems() == null) ? 0 : this.getAvailableItems().hashCode());
+		result = prime * result + ((this.getUnavailableItems() == null) ? 0 : this.getUnavailableItems().hashCode());
 		return result;
 	}
 
@@ -39,11 +47,12 @@ public class Offer {
 		if (getClass() != obj.getClass())
 			return false;
 		Offer other = (Offer) obj;
-		if (availableItems == null) {
-			if (other.availableItems != null)
+		if (this.getAvailableItems() == null) {
+			if (other.getAvailableItems() != null)
 				return false;
-		} else if (!availableItems.equals(other.availableItems))
+		} else if (!this.getAvailableItems().equals(other.getAvailableItems())) {
 			return false;
+		}
 		return true;
 	}
 
@@ -55,10 +64,10 @@ public class Offer {
 	 * @return
 	 */
 	public boolean sameAs(Offer seenOffer, double delta) {
-		if (!(availableItems.size() == seenOffer.availableItems.size()))
+		if (!(this.getAvailableItems().size() == seenOffer.getAvailableItems().size()))
 			return false;
 
-		for (OfferItem item : availableItems) {
+		for (OfferItem item : this.getAvailableItems()) {
 			OfferItem sameItem = seenOffer.findItem(item.getProduct().getProductId());
 			if (sameItem == null)
 				return false;
@@ -70,7 +79,7 @@ public class Offer {
 	}
 
 	private OfferItem findItem(String productId) {
-		for (OfferItem item : availableItems) {
+		for (OfferItem item : this.getAvailableItems()) {
 			if (item.getProduct().getProductId().equals(productId))
 				return item;
 		}
