@@ -40,7 +40,11 @@ public class OfferItem {
 		if (totalDiscount != null)
 			discountValue = discountValue.subtract(totalDiscount.getDiscount());
 
-		this.totalCost.setCost(product.getProductPrice().getCost().multiply(new BigDecimal(quantity)).subtract(discountValue));
+		this.totalCost.setCost(generateTotalCost(product, quantity, discountValue));
+	}
+
+	private BigDecimal generateTotalCost(Product product, int quantity, BigDecimal discountValue) {
+		return product.getProductPrice().getCost().multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
 
 	public Product getProduct() {
